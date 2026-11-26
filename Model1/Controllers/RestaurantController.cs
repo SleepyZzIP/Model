@@ -44,11 +44,11 @@ namespace Model1.Controllers
 
         public ApiResult Detail(int restaurantId)
         {
-            var x = db.Restaurants.FirstOrDefault(r => r.RestaurantId = restaurantId);
-            if (x = null)
+            var x = db.Restaurants.FirstOrDefault(r => r.RestaurantId == restaurantId);
+            if (x == null)
                 return ApiResult.Fail(404,"Restaurant not found");
             return ApiResult.Ok(new { 
-            x.BusinessHour,x.RemainingParkingSpaces,x.RestaurantId,x.RestaurantName,x.Address,x.Phone,
+            x.BusinessHours,x.RemainingParkingSpaces,x.RestaurantId,x.RestaurantName,x.Address,x.Phone,
                 rating = x.Rating.ToString(),
                 x.PriceRange,
                 x.RestaurantType,
